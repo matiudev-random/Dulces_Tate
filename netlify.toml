@@ -1,0 +1,25 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# El service worker no debe quedar cacheado por el CDN, para que las
+# actualizaciones de la PWA lleguen a los dispositivos apenas se publican.
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/manifest.webmanifest"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# No hay rutas propias todavía (una sola pantalla), pero esto evita 404 en
+# refresh si más adelante se agrega ruteo en el cliente.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

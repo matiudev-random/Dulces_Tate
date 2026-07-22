@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #fbf3e7;
+  --color-paper-raised: #fffdf8;
+  --color-ink: #4a3735;
+  --color-ink-soft: #8a7267;
+  --color-blush: #e8c4b8;
+  --color-blush-deep: #cf8f7c;
+  --color-sage: #a9c0a0;
+  --color-sage-deep: #6f8f63;
+  --color-periwinkle: #c2cbe3;
+  --color-periwinkle-deep: #8d9bcf;
+  --color-brass: #b08d57;
+  --color-brass-deep: #8c6d3f;
+
+  --font-display: "Cormorant Garamond", "Iowan Old Style", serif;
+  --font-body: "Libre Franklin", "Segoe UI", sans-serif;
+  --font-mono: "Courier Prime", ui-monospace, monospace;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    position: relative;
+  }
+
+  /* Subtle paper grain, like the inside cover of an old ledger */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.035;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  #root {
+    position: relative;
+    z-index: 1;
+  }
+}
