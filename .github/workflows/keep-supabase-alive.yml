@@ -1,11 +1,11 @@
 name: Keep Supabase alive
 
 # El plan gratuito de Supabase pausa el proyecto tras 7 días sin actividad.
-# Esta acción hace una consulta liviana cada 3 días para que nunca se cumpla
+# Esta acción hace una consulta liviana cada 2 días para que nunca se cumpla
 # ese plazo, sin depender de que la app se use seguido.
 on:
   schedule:
-    - cron: "0 12 */3 * *"
+    - cron: "0 12 */2 * *"
   workflow_dispatch:
 
 jobs:
